@@ -24,6 +24,7 @@ db.once('open', () => {
   console.log('Connected to the database');
 });
 
+
 //GET - REQUEST
 app.get('/.netlify/functions/server/api/allTask', async(req, res) => {
    const tasks = await Tasks.find({});
