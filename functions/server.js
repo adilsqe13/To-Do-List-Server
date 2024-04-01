@@ -2,7 +2,6 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const mongoURI = process.env.MONGODB_URI;
 const Tasks = require('./models/Task');
-const Users = require('./models/User');
 const serverless = require('serverless-http');
 const bodyParser = require('body-parser');
 const express = require('express');
