@@ -25,14 +25,14 @@ db.once('open', () => {
 });
 
 
-//GET - REQUEST
+//GET ALL TASKS
 app.get('/.netlify/functions/server/api/allTask', async(req, res) => {
    const tasks = await Tasks.find({});
    res.status(200).json(tasks);
 });
 
 
-//POST - REQUEST
+//POST A TASK
 app.post('/.netlify/functions/server/api/allTask', async(req, res) => {
   const { trimmedTask } = req.body;
   const task = new Tasks({
@@ -43,7 +43,7 @@ app.post('/.netlify/functions/server/api/allTask', async(req, res) => {
 });
 
 
-//DELETE - REQUEST
+//DELETE A TASK
 app.delete('/.netlify/functions/server/api/allTask/:taskId', async(req, res) => {
   const taskId = req.params.taskId;
   await Tasks.deleteOne({_id: taskId});
@@ -51,7 +51,7 @@ app.delete('/.netlify/functions/server/api/allTask/:taskId', async(req, res) => 
 });
 
 
-//DELETE - REQUEST  (FOR RESET-ALL APP)
+//DELETE ALL TASKS
 app.delete('/.netlify/functions/server/reset-data', async(req, res) => {
   await Tasks.deleteMany({});
   res.json({success:true});
